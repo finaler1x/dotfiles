@@ -1,0 +1,9 @@
+version: 1
+git_protocol: ssh
+editor: nvim
+pager: bat
+prompt: enabled
+aliases:
+  co: pr checkout
+  pv: pr view --web
+  rv: repo view --web

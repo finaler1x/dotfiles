@@ -1,0 +1,14 @@
+# Machine-specific overrides — copy to ~/.zshrc.local (untracked)
+
+# Example: Linux GPU workaround for wezterm
+# alias wezterm="__EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json GBM_BACKEND=i915 wezterm"
+
+# Example: Work proxy
+# export HTTP_PROXY="http://proxy.company.com:8080"
+# export HTTPS_PROXY="http://proxy.company.com:8080"
+
+# Example: Work-specific tools
+# export KUBECONFIG="$HOME/.kube/work-config"
+
+# Example: Extra PATH entries
+# export PATH="$PATH:/opt/company-tools/bin"

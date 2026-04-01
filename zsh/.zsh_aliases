@@ -1,0 +1,45 @@
+# Base
+alias vim="nvim"
+alias vi="nvim"
+alias ll="ls -lah"
+alias la="ls -la"
+alias l="ls -CF"
+alias cd="z"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias cls="clear"
+alias grep="grep --color=auto"
+alias df="df -h"
+alias du="du -h"
+alias ping="ping -c 5"
+alias reload="source ~/.zshrc"
+
+# Navigation
+alias cdp="cd ~/Projects"
+alias dots="cd ~/dotfiles"
+
+# System
+alias ports="ss -tulnp"
+alias myip="curl ifconfig.me"
+
+# Tmux
+alias ta="tmux attach"
+alias tls="tmux ls"
+alias tn="tmux new -s"
+
+# Lazygit / Lazydocker
+alias lg="lazygit"
+alias ld="lazydocker"
+
+# Docker
+alias d="docker"
+alias dc="docker compose"
+alias dps="docker ps"
+alias dimg="docker images"
+alias dprune="docker system prune -af"
+
+# Mise
+alias mi="mise install"
+alias mu="mise use"
+alias ml="mise ls"

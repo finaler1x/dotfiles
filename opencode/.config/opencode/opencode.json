@@ -1,0 +1,52 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "options": {
+        "num_ctx": 32000
+      }
+    }
+  },
+  "permission": {
+    "edit": "ask",
+    "bash": "ask"
+  },
+  "model": "github-copilot/claude-sonnet-4-6",
+  "small_model": "github-copilot/claude-haiku-4-5",
+  "share": "disabled",
+  "autoupdate": "notify",
+  "watcher": {
+    "ignore": [
+      "node_modules/**",
+      "dist/**",
+      ".git/**",
+      "**/.env",
+      "**/.env.*",
+      "**/*.key",
+      "**/*.pem",
+      "**/*.crt",
+      "**/*.p12",
+      "**/*.pfx",
+      "**/id_rsa",
+      "**/id_ed25519",
+      "**/id_ecdsa",
+      "**/.ssh/**",
+      "**/.gnupg/**",
+      "**/.aws/**",
+      "**/.config/gcloud/**",
+      "**/secrets/**",
+      "**/*secret*",
+      "**/*password*",
+      "**/*.credentials",
+      "**/token",
+      "**/*.token"
+    ]
+  },
+  "plugin": [],
+  "disabled_providers": [
+    "openai",
+    "gemini",
+    "opencode",
+    "groq"
+  ]
+}

@@ -1,0 +1,48 @@
+[user]
+	name = Your Name
+	email = your@email.com
+
+[core]
+	editor = nvim
+	pager = delta
+	autocrlf = input
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+
+[rebase]
+	autoStash = true
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+
+[delta]
+	navigate = true
+	side-by-side = true
+	line-numbers = true
+	syntax-theme = Catppuccin-macchiato
+
+[interactive]
+	diffFilter = delta --color-only
+
+[alias]
+	s   = status
+	a   = add
+	c   = commit
+	p   = push
+	l   = pull
+	co  = checkout
+	b   = branch
+	d   = diff
+	lg  = log --oneline --graph --decorate --all
+	undo = reset HEAD~1 --mixed
+	aliases = config --get-regexp alias
