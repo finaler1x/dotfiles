@@ -11,6 +11,20 @@
     "edit": "ask",
     "bash": "ask"
   },
+  "agent": {
+    "build": {
+      "disable": true
+    },
+    "plan": {
+      "disable": true
+    },
+    "general": {
+      "disable": true
+    },
+    "explore": {
+      "disable": true
+    }
+  },
   "model": "github-copilot/claude-sonnet-4-6",
   "small_model": "github-copilot/claude-haiku-4-5",
   "share": "disabled",
@@ -42,11 +56,57 @@
       "**/*.token"
     ]
   },
-  "plugin": [],
+  "plugin": [
+    "envsitter-guard@latest",
+    "@tarquinen/opencode-dcp@latest",
+    "@ramtinj95/opencode-tokenscope@latest",
+    "opencode-mem@latest",
+    "@slkiser/opencode-quota",
+    "opencode-snip@latest",
+    "opencode-notify@latest",
+    "opencode-handoff@latest"
+  ],
   "disabled_providers": [
     "openai",
     "gemini",
     "opencode",
     "groq"
-  ]
+  ],
+  "command": {
+    "feature": {
+      "description": "Start a new feature in a git worktree",
+      "agent": "builder",
+      "template": "Start work on a new feature called $ARGUMENTS.\n\nFirst run these commands in order:\n1. `git checkout -b feature/$ARGUMENTS`\n2. `git worktree add ../${PWD##*/}-$ARGUMENTS feature/$ARGUMENTS`\n\nVerify both succeeded before touching any files. Then implement the feature. Follow the conventions in AGENTS.md. When done, run the test suite — only commit if tests pass. Use a conventional commit message (feat: ...)."
+    },
+    "feature-cleanup": {
+      "description": "Remove a feature worktree after merging",
+      "agent": "builder",
+      "template": "Clean up the worktree for feature $ARGUMENTS.\n\nRun:\n1. `git worktree remove ../${PWD##*/}-$ARGUMENTS`\n2. `git branch -d feature/$ARGUMENTS`\n\nConfirm both commands succeeded."
+    },
+    "feature-status": {
+      "description": "Show all active feature worktrees",
+      "agent": "planner",
+      "template": "Run `git worktree list` and `git branch -v` and give me a summary of all active feature worktrees, which branches they're on, and their latest commit message."
+    },
+    "plan": {
+      "description": "Find relevant files and create an implementation plan",
+      "agent": "planner",
+      "template": "Analyze the codebase and create a detailed implementation plan for: $ARGUMENTS\n\nSave the plan to .opencode/plans/$ARGUMENTS.md before finishing."
+    },
+    "review": {
+      "description": "Review recent changes before committing",
+      "agent": "reviewer",
+      "template": "Review the current git diff and staged changes. Provide a full code review with blocking issues, suggestions, and what looks good. End with approve or request changes."
+    },
+    "debug": {
+      "description": "Diagnose and fix a failing check or test",
+      "agent": "debugger",
+      "template": "A check or test is failing. Diagnose and fix it.\n\nFailing command or error: $ARGUMENTS\n\nFollow the debugger protocol: reproduce → isolate → fix → verify. Report findings in the standard debug report format."
+    },
+    "spar": {
+      "description": "Think through a technical problem before planning",
+      "agent": "sparring",
+      "template": "I want to think through this before writing any code: $ARGUMENTS\n\nChallenge my assumptions, suggest alternatives, and help me reach a decision. When we're aligned, pass to @planner."
+    }
+  }
 }

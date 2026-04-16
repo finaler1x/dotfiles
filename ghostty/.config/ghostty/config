@@ -1,5 +1,4 @@
 theme = catppuccin-macchiato
-command = tmux attach || tmux new-session
 shell-integration = zsh
 clipboard-read = allow
 window-theme = ghostty
@@ -10,5 +9,3 @@ gtk-titlebar = true
 window-padding-x = 4
 window-padding-y = 4,0
 background-opacity = 0.90
-keybind = ctrl+shift+w=close_window
-confirm-close-surface = false

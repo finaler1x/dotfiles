@@ -4,7 +4,7 @@
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:${GOPATH:-$HOME/go}/bin"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/usr/bin/elixir"
 
@@ -16,8 +16,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PNPM_HOME="$HOME/.local/share/pnpm"
 [[ -d "$PNPM_HOME" ]] && export PATH="$PATH:$PNPM_HOME"
 
-# fzf
-[[ -d "$HOME/.fzf/bin" ]] && export PATH="$PATH:$HOME/.fzf/bin"
 
 # Final PATH cleanup
 typeset -U PATH path
@@ -27,6 +25,7 @@ typeset -U PATH path
 # ============================================
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
+export DOCKER_API_VERSION=1.41
 export HISTSIZE=100000
 export SAVEHIST=100000
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
@@ -74,3 +73,14 @@ command -v uv &>/dev/null && eval "$(uv generate-shell-completion zsh)"
 # Local overrides (machine-specific, untracked)
 # ============================================
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+# bun completions
+[ -s "/home/antonio/.bun/_bun" ] && source "/home/antonio/.bun/_bun"
+
+# fnm
+FNM_PATH="/home/antonio/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
+
+export PATH="$HOME/.local/bin:$PATH"

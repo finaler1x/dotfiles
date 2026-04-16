@@ -13,6 +13,7 @@ Personal configuration files managed with [GNU Stow](https://www.gnu.org/softwar
 | `ghostty` | `~/.config/ghostty/config` |
 | `bat` | `~/.config/bat/config` |
 | `lazygit` | `~/.config/lazygit/config.yml` |
+| `lazydocker` | `~/.config/lazydocker/config.yml` |
 | `gh` | `~/.config/gh/config.yml` |
 | `git` | `~/.gitconfig` |
 | `mise` | `~/.config/mise/config.toml` |
