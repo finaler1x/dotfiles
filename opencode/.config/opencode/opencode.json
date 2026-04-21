@@ -66,12 +66,6 @@
     "opencode-notify@latest",
     "opencode-handoff@latest"
   ],
-  "disabled_providers": [
-    "openai",
-    "gemini",
-    "opencode",
-    "groq"
-  ],
   "command": {
     "feature": {
       "description": "Start a new feature in a git worktree",
