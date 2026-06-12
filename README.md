@@ -6,11 +6,12 @@ Personal configuration files managed with [GNU Stow](https://www.gnu.org/softwar
 
 | Package | Symlinked to |
 |---------|-------------|
-| `nvim` | `~/.config/nvim/` (LazyVim) |
+| `nvim` | `~/.config/nvim/` ([Cheat Sheets](cheat-sheets/README.md)) |
 | `tmux` | `~/.config/tmux/tmux.conf` |
 | `zsh` | `~/.zshrc`, `~/.zsh_aliases`, `~/.config/sheldon/plugins.toml` |
 | `starship` | `~/.config/starship.toml` |
 | `ghostty` | `~/.config/ghostty/config` |
+| `yazi` | `~/.config/yazi/` |
 | `bat` | `~/.config/bat/config` |
 | `lazygit` | `~/.config/lazygit/config.yml` |
 | `lazydocker` | `~/.config/lazydocker/config.yml` |

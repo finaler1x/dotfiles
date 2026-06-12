@@ -1,9 +1,6 @@
 # Base
 alias vim="nvim"
 alias vi="nvim"
-alias ll="ls -lah"
-alias la="ls -la"
-alias l="ls -CF"
 alias cd="z"
 alias ..="cd .."
 alias ...="cd ../.."
@@ -14,6 +11,24 @@ alias df="df -h"
 alias du="du -h"
 alias ping="ping -c 5"
 alias reload="source ~/.zshrc"
+
+# Directory listings
+if command -v eza >/dev/null 2>&1; then
+  export EZA_COLORS="di=38;5;111:ln=38;5;183:ex=38;5;149:fi=0:pi=38;5;179:so=38;5;176:bd=38;5;215:cd=38;5;215:su=38;5;232;48;5;203:sg=38;5;232;48;5;110:tw=38;5;232;48;5;150:ow=38;5;232;48;5;179:st=38;5;232;48;5;117"
+  alias ls="eza --group-directories-first --icons=auto --color=auto"
+  alias ll="eza -lagh --group-directories-first --git --icons=auto --color=auto"
+  alias la="eza -lah --group-directories-first --icons=auto --color=auto"
+  alias l="eza -1 --group-directories-first --icons=auto --color=auto"
+  lt() { eza -l -s modified -r --icons=auto --color=auto "$@" | less -FRX; }
+  lta() { eza -la -s modified -r --icons=auto --color=auto "$@" | less -FRX; }
+else
+  alias ls="ls --color=auto"
+  alias ll="ls -lah --color=auto"
+  alias la="ls -la --color=auto"
+  alias l="ls -CF --color=auto"
+  lt() { ls -lt --color=auto "$@" | less -FRX; }
+  lta() { ls -lat --color=auto "$@" | less -FRX; }
+fi
 
 # Navigation
 alias cdp="cd ~/Projects"

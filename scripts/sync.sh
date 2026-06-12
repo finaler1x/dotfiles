@@ -42,7 +42,7 @@ echo "Restowing packages..."
 echo ""
 
 failed=0
-for pkg in tmux opencode nvim zsh ghostty bat lazygit lazydocker starship gh git mise; do
+for pkg in tmux opencode nvim zsh ghostty yazi bat lazygit lazydocker starship gh git mise; do
   restow_package "$pkg" || failed=1
 done
 

@@ -14,6 +14,7 @@ stow_package opencode
 stow_package nvim
 stow_package zsh
 stow_package ghostty
+stow_package yazi
 stow_package bat
 stow_package lazygit
 stow_package lazydocker
