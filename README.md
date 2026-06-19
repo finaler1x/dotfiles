@@ -11,7 +11,6 @@ Personal configuration files managed with [GNU Stow](https://www.gnu.org/softwar
 | `zsh` | `~/.zshrc`, `~/.zsh_aliases`, `~/.config/sheldon/plugins.toml` |
 | `starship` | `~/.config/starship.toml` |
 | `ghostty` | `~/.config/ghostty/config` |
-| `yazi` | `~/.config/yazi/` |
 | `bat` | `~/.config/bat/config` |
 | `lazygit` | `~/.config/lazygit/config.yml` |
 | `lazydocker` | `~/.config/lazydocker/config.yml` |
