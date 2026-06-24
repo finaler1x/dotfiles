@@ -8,9 +8,51 @@
     }
   },
   "permission": {
+    "read": {
+      "*": "allow",
+      "**/.env": "deny",
+      "**/.env.*": "deny",
+      "**/*.key": "deny",
+      "**/*.pem": "deny",
+      "**/*.p12": "deny",
+      "**/*.pfx": "deny",
+      "**/.ssh/**": "deny",
+      "**/.aws/**": "deny",
+      "**/secrets/**": "deny",
+      "**/*secret*": "deny",
+      "**/*password*": "deny",
+      "**/*.credentials": "deny",
+      "**/*.token": "deny"
+    },
     "edit": "ask",
-    "bash": "ask"
+    "bash": {
+      "*": "ask",
+      "git status *": "allow",
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git branch *": "allow",
+      "git worktree list*": "allow",
+      "ls *": "allow",
+      "find *": "allow",
+      "grep *": "allow",
+      "rg *": "allow",
+      "cat *": "ask",
+      "head *": "allow",
+      "tail *": "allow",
+      "sed -n *": "allow",
+      "sed *": "ask",
+      "pwd": "allow",
+      "rm *": "deny",
+      "sudo *": "deny",
+      "chmod *": "ask",
+      "chown *": "deny",
+      "git push *": "deny",
+      "git reset *": "ask",
+      "git clean *": "ask",
+      "git commit *": "ask"
+    }
   },
+  "default_agent": "builder",
   "agent": {
     "build": {
       "disable": true
@@ -23,10 +65,10 @@
     },
     "explore": {
       "disable": true
-    }
+    },
   },
-  "model": "github-copilot/claude-sonnet-4-6",
-  "small_model": "github-copilot/claude-haiku-4-5",
+  "model": "github-copilot/claude-sonnet-4.6",
+  "small_model": "github-copilot/claude-haiku-4.5",
   "share": "disabled",
   "autoupdate": "notify",
   "watcher": {
@@ -58,24 +100,20 @@
   },
   "plugin": [
     "envsitter-guard@latest",
-    "@tarquinen/opencode-dcp@latest",
     "@ramtinj95/opencode-tokenscope@latest",
-    "opencode-mem@latest",
-    "@slkiser/opencode-quota",
-    "opencode-snip@latest",
     "opencode-notify@latest",
     "opencode-handoff@latest"
   ],
   "command": {
     "feature": {
       "description": "Start a new feature in a git worktree",
-      "agent": "builder",
-      "template": "Start work on a new feature called $ARGUMENTS.\n\nFirst run these commands in order:\n1. `git checkout -b feature/$ARGUMENTS`\n2. `git worktree add ../${PWD##*/}-$ARGUMENTS feature/$ARGUMENTS`\n\nVerify both succeeded before touching any files. Then implement the feature. Follow the conventions in AGENTS.md. When done, run the test suite — only commit if tests pass. Use a conventional commit message (feat: ...)."
+      "agent": "planner",
+      "template": "Start work on a new feature called $ARGUMENTS.\n\nFirst propose the exact git commands needed to create the branch and worktree. Do not run them until approved.\n\nAfter the worktree exists, create an implementation plan. Do not implement yet."
     },
     "feature-cleanup": {
       "description": "Remove a feature worktree after merging",
-      "agent": "builder",
-      "template": "Clean up the worktree for feature $ARGUMENTS.\n\nRun:\n1. `git worktree remove ../${PWD##*/}-$ARGUMENTS`\n2. `git branch -d feature/$ARGUMENTS`\n\nConfirm both commands succeeded."
+      "agent": "planner",
+      "template": "Clean up the worktree for feature $ARGUMENTS.\n\nPropose the following commands and wait for approval before running them:\n1. `git worktree remove ../${PWD##*/}-$ARGUMENTS`\n2. `git branch -d feature/$ARGUMENTS`\n\nDo not run them until approved."
     },
     "feature-status": {
       "description": "Show all active feature worktrees",
@@ -85,17 +123,17 @@
     "plan": {
       "description": "Find relevant files and create an implementation plan",
       "agent": "planner",
-      "template": "Analyze the codebase and create a detailed implementation plan for: $ARGUMENTS\n\nSave the plan to .opencode/plans/$ARGUMENTS.md before finishing."
+      "template": "Analyze the codebase and create a detailed implementation plan for: $ARGUMENTS\n\nSave the plan to .opencode/plans/<short-kebab-case-task-name>.md before finishing."
     },
     "review": {
       "description": "Review recent changes before committing",
       "agent": "reviewer",
-      "template": "Review the current git diff and staged changes. Provide a full code review with blocking issues, suggestions, and what looks good. End with approve or request changes."
+      "template": "Review the current git diff and staged changes against the active plan, if present. Report blocking issues first. Include suggestions only if useful. End with APPROVE or REQUEST CHANGES."
     },
     "debug": {
-      "description": "Diagnose and fix a failing check or test",
+      "description": "Diagnose a failing check or test",
       "agent": "debugger",
-      "template": "A check or test is failing. Diagnose and fix it.\n\nFailing command or error: $ARGUMENTS\n\nFollow the debugger protocol: reproduce → isolate → fix → verify. Report findings in the standard debug report format."
+      "template": "A check or test is failing. Diagnose the root cause and provide a minimal fix recommendation. Do not edit any files.\n\nFailing command or error: $ARGUMENTS\n\nFollow the debugger protocol: reproduce → isolate → recommend fix. Report findings in the standard debug report format."
     },
     "spar": {
       "description": "Think through a technical problem before planning",
