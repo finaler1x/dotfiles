@@ -82,6 +82,11 @@ if [[ "$PLATFORM" == "mac" ]]; then
   install_if_missing bat       brew install bat
   install_if_missing zoxide    brew install zoxide
   install_if_missing fzf       brew install fzf
+  install_if_missing rg        brew install ripgrep
+  install_if_missing fd        brew install fd
+  install_if_missing dust      brew install dust
+  install_if_missing duf       brew install duf
+  install_if_missing xh        brew install xh
   install_if_missing lazygit     brew install lazygit
   install_if_missing lazydocker  brew install lazydocker
   install_if_missing gh          brew install gh
@@ -93,6 +98,12 @@ else
   install_if_missing bat         install_pkg bat
   install_if_missing zoxide      install_pkg zoxide
   install_if_missing fzf         install_pkg fzf
+  install_if_missing rg          install_pkg ripgrep
+  install_if_missing fd          install_pkg fd-find
+  [[ -f /usr/bin/fdfind ]] && mkdir -p ~/.local/bin && ln -sf /usr/bin/fdfind ~/.local/bin/fd
+  install_if_missing dust        install_pkg du-dust
+  install_if_missing duf         install_pkg duf
+  install_if_missing xh          install_pkg xh
   install_if_missing lazygit     install_pkg lazygit
   install_if_missing lazydocker  sh -c "$(curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh)"
   install_if_missing gh          install_pkg gh
