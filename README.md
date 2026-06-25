@@ -33,7 +33,7 @@ make install
 ## Commands
 
 ### `make bootstrap`
-Installs all dependencies (sheldon, starship, bat, zoxide, fzf, lazygit, gh, git-delta, mise). Safe to run on a fresh machine — skips anything already installed.
+Installs all dependencies (sheldon, starship, bat, zoxide, fzf, rg, fd, dust, duf, xh, lazygit, lazydocker, gh, git-delta, mise). Safe to run on a fresh machine — skips anything already installed.
 
 ### `make install`
 Stows all packages by creating symlinks from `$HOME` into this repo. Run once after cloning. Aborts on conflicts — if a config file already exists at the target path, remove it first and re-run.

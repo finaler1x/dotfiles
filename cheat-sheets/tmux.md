@@ -17,3 +17,6 @@ The tmux prefix in this repo is `Ctrl-b`. Mouse support is enabled, panes and wi
 | `Ctrl-b [` | Enter copy mode |
 | `Ctrl-h/j/k/l` | Move between Neovim windows and tmux panes |
 | `Prefix + I` | Install tmux plugins with TPM |
+| `Prefix + g` | Open lazygit popup |
+| `Prefix + D` | Open lazydocker popup |
+| `Prefix + B` | Open btop popup |
