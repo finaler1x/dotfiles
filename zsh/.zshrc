@@ -25,10 +25,10 @@ typeset -U PATH path
 # ============================================
 export LANG=en_US.UTF-8
 export EDITOR='nvim'
-export DOCKER_API_VERSION=1.41
 export HISTSIZE=100000
 export SAVEHIST=100000
-setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
+export HISTFILE="$HOME/.zsh_history"
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE APPEND_HISTORY INC_APPEND_HISTORY
 
 # ============================================
 # Plugins
