@@ -30,6 +30,10 @@ export SAVEHIST=100000
 export HISTFILE="$HOME/.zsh_history"
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE APPEND_HISTORY INC_APPEND_HISTORY
 
+# fzf — use fd as backend
+export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # ============================================
 # Plugins
 # ============================================
