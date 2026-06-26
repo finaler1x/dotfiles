@@ -67,7 +67,7 @@ PANE_TOPRIGHT="$(tmux split-window -h -t "$PANE_LEFT" -p 40 -c "$PROJECT_PATH" -
 # Launch opencode in the top-right pane
 tmux send-keys -t "$PANE_TOPRIGHT" "opencode" Enter
 
-# Split bottom-right 50% — bottom-right is a plain shell, no command needed
+# Split bottom-right 50% — plain shell, no command
 tmux split-window -v -t "$PANE_TOPRIGHT" -p 50 -c "$PROJECT_PATH"
 
 # Focus the left (nvim) pane
