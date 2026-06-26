@@ -21,3 +21,4 @@ stow_package starship
 stow_package gh
 stow_package git
 stow_package mise
+stow_package proj
