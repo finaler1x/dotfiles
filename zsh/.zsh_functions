@@ -1,0 +1,23 @@
+# ============================================
+# proj — tmux session switcher (fzf)
+# ============================================
+
+# fzf-based tmux session switcher as a zsh widget.
+_proj_fzf_session() {
+  local sessions
+  sessions=$(tmux list-sessions -F '#{session_name}' 2>/dev/null) || {
+    zle -M "No tmux sessions found."
+    return
+  }
+  local selected
+  selected=$(echo "$sessions" | fzf --prompt="session: " --height=40% --reverse)
+  [[ -z "$selected" ]] && return
+  if [[ -n "$TMUX" ]]; then
+    tmux switch-client -t "=$selected"
+  else
+    tmux attach-session -t "=$selected"
+  fi
+  zle reset-prompt
+}
+zle -N _proj_fzf_session
+bindkey '^F' _proj_fzf_session

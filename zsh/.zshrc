@@ -70,6 +70,7 @@ bindkey '^[[1;5D' backward-word
 # Aliases & Functions
 # ============================================
 source "$HOME/.zsh_aliases"
+[[ -f "$HOME/.zsh_functions" ]] && source "$HOME/.zsh_functions"
 
 mkcd() { mkdir -p "$1" && cd "$1"; }
 project() { cd ~/Projects/$1; }
