@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+# proj — tmux project sessionizer
+# Usage: proj [--help] <path>
+set -euo pipefail
+
+if [[ "${1:-}" == "--help" ]]; then
+  cat <<'EOF'
+Usage: proj <path>
+       proj --help
+
+Opens a project in a dedicated tmux session with a fixed 3-pane layout.
+Reattaches if the session already exists.
+
+Layout:
+  ┌──────────────┬───────────┐
+  │              │ opencode  │
+  │    nvim      ├───────────┤
+  │              │   shell   │
+  └──────────────┴───────────┘
+  60% left          40% right
+
+Session name = basename of the resolved path (special chars replaced with -).
+EOF
+  exit 0
+fi
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: proj <path>" >&2
+  echo "       proj --help" >&2
+  exit 1
+fi
+
+PROJECT_PATH="$(realpath "$1")"
+
+if [[ ! -d "$PROJECT_PATH" ]]; then
+  echo "proj: not a directory: $PROJECT_PATH" >&2
+  exit 1
+fi
+
+SESSION_NAME="$(basename "$PROJECT_PATH")"
+
+# Sanitise: replace all non-alphanumeric/underscore/hyphen chars with -
+SESSION_NAME="${SESSION_NAME//[^a-zA-Z0-9_-]/-}"
+
+if tmux has-session -t "=$SESSION_NAME" 2>/dev/null; then
+  # Reattach or switch to existing session
+  if [[ -n "${TMUX:-}" ]]; then
+    tmux switch-client -t "=$SESSION_NAME"
+  else
+    tmux attach-session -t "=$SESSION_NAME"
+  fi
+  exit 0
+fi
+
+# Create new session (detached), starting in the project directory
+tmux new-session -d -s "$SESSION_NAME" -c "$PROJECT_PATH"
+
+# Capture the initial pane ID (left — nvim)
+PANE_LEFT="$(tmux display-message -t "$SESSION_NAME:1" -p '#{pane_id}')"
+
+# Launch nvim in the left pane
+tmux send-keys -t "$PANE_LEFT" "nvim ." Enter
+
+# Split right 40% — capture the new pane ID (top-right — opencode)
+PANE_TOPRIGHT="$(tmux split-window -h -t "$PANE_LEFT" -p 40 -c "$PROJECT_PATH" -P -F '#{pane_id}')"
+
+# Launch opencode in the top-right pane
+tmux send-keys -t "$PANE_TOPRIGHT" "opencode" Enter
+
+# Split bottom-right 50% — bottom-right is a plain shell, no command needed
+tmux split-window -v -t "$PANE_TOPRIGHT" -p 50 -c "$PROJECT_PATH"
+
+# Focus the left (nvim) pane
+tmux select-pane -t "$PANE_LEFT"
+
+# Attach or switch
+if [[ -n "${TMUX:-}" ]]; then
+  tmux switch-client -t "=$SESSION_NAME"
+else
+  tmux attach-session -t "=$SESSION_NAME"
+fi

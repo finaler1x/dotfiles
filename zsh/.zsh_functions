@@ -3,6 +3,7 @@
 # ============================================
 
 # fzf-based tmux session switcher as a zsh widget.
+# Only useful inside tmux; binding is guarded accordingly.
 _proj_fzf_session() {
   local sessions
   sessions=$(tmux list-sessions -F '#{session_name}' 2>/dev/null) || {
@@ -10,14 +11,12 @@ _proj_fzf_session() {
     return
   }
   local selected
-  selected=$(echo "$sessions" | fzf --prompt="session: " --height=40% --reverse)
+  selected=$(echo "$sessions" | fzf-tmux -p --prompt="session: " --reverse)
   [[ -z "$selected" ]] && return
-  if [[ -n "$TMUX" ]]; then
-    tmux switch-client -t "=$selected"
-  else
-    tmux attach-session -t "=$selected"
-  fi
+  tmux switch-client -t "=$selected"
   zle reset-prompt
 }
 zle -N _proj_fzf_session
-bindkey '^F' _proj_fzf_session
+
+# Only bind inside tmux — fzf-tmux requires a running tmux server
+[[ -n "$TMUX" ]] && bindkey '^F' _proj_fzf_session
