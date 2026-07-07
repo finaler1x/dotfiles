@@ -11,6 +11,8 @@ alias df="df -h"
 alias du="du -h"
 alias ping="ping -c 5"
 alias reload="source ~/.zshrc"
+alias mv="mv -i"
+alias cp="cp -i"
 
 # Directory listings
 if command -v eza >/dev/null 2>&1; then
