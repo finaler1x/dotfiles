@@ -1,3 +1,4 @@
+onboarding = false
 [ui]
 agent_panel_sort = "priority"
 show_agent_labels_on_pane_borders = true
@@ -13,3 +14,10 @@ new_tab = ["prefix+c", "ctrl+alt+c"]
 split_vertical = ["prefix+v", "ctrl+alt+d"]
 split_horizontal = ["prefix+minus", "ctrl+alt+shift+d"]
 zoom = ["prefix+z", "ctrl+alt+z"]
+
+[ui.toast]
+delivery = "herdr"
+
+[theme]
+name = "catppuccin"
+auto_switch = false
