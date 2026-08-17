@@ -30,7 +30,7 @@ Quick reference for all tools in this setup.
 |-----|--------|
 | `Alt-Space` | Open KRunner |
 | `Alt-Tab` | Switch windows |
-| `Meta-L` | Lock session (reassigned from Ctrl-Alt-L — freed for herdr) |
+| `Meta-L` | Lock session |
 | `Print` | Screenshot with Spectacle |
 | `Meta-Shift-S` | Rectangular region screenshot |
 | `Ctrl-Alt-Del` | Logout / shutdown screen |
@@ -45,16 +45,17 @@ Quick reference for all tools in this setup.
 
 | Key | Action |
 |-----|--------|
-| `Ctrl-Alt-H` / `prefix+h` | Focus pane left |
-| `Ctrl-Alt-J` / `prefix+j` | Focus pane down |
-| `Ctrl-Alt-K` / `prefix+k` | Focus pane up |
-| `Ctrl-Alt-L` / `prefix+l` | Focus pane right |
+| `Ctrl-Shift-Left` / `prefix+h` | Focus pane left |
+| `Ctrl-Shift-Down` / `prefix+j` | Focus pane down |
+| `Ctrl-Shift-Up` / `prefix+k` | Focus pane up |
+| `Ctrl-Shift-Right` / `prefix+l` | Focus pane right |
 | `Ctrl-Alt-[` / `prefix+p` | Previous tab |
 | `Ctrl-Alt-]` / `prefix+n` | Next tab |
 | `Ctrl-Alt-C` / `prefix+c` | New tab |
 | `Ctrl-Alt-D` / `prefix+v` | Split vertical |
 | `Ctrl-Alt-Shift-D` / `prefix+-` | Split horizontal |
 | `Ctrl-Alt-Z` / `prefix+z` | Zoom pane |
+| `prefix+w` | Open workspace picker (requires `Ctrl-b` prefix) |
 
 ---
 
