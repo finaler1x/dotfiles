@@ -96,3 +96,7 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
+
+
+# Load Angular CLI autocompletion.
+command -v ng &>/dev/null && source <(ng completion script)
