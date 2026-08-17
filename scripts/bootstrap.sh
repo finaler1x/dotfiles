@@ -91,6 +91,9 @@ if [[ "$PLATFORM" == "mac" ]]; then
   install_if_missing lazydocker  brew install lazydocker
   install_if_missing gh          brew install gh
   install_if_missing mise        brew install mise
+  install_if_missing nvim        brew install neovim
+  install_if_missing tmux        brew install tmux
+  install_if_missing btop        brew install btop
 else
   install_if_missing sheldon     sh -c "$(curl --proto '=https' -sSfL https://rossmacarthur.github.io/install/crate.sh)" -- --crate sheldon --to ~/.local/bin
   install_if_missing delta       install_pkg git-delta
@@ -108,10 +111,13 @@ else
   install_if_missing lazydocker  sh -c "$(curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh)"
   install_if_missing gh          install_pkg gh
   install_if_missing mise        sh -c "$(curl https://mise.run)"
+  install_if_missing nvim        install_pkg neovim
+  install_if_missing tmux        install_pkg tmux
+  install_if_missing btop        install_pkg btop
 fi
 
 # ============================================
 # Done
 # ============================================
 echo ""
-echo "Bootstrap complete. Run 'make install' to stow all configs."
+echo "Bootstrap complete. Run 'make install' to stow all configs or 'make apply' after pulling updates."

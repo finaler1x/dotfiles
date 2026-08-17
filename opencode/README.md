@@ -4,11 +4,12 @@ This directory is managed by [stow](https://www.gnu.org/software/stow/) and syml
 
 ## Setup
 
-### 1. Stow the config
+### 1. Apply the config
 
 ```sh
 cd ~/dotfiles
-stow opencode
+make apply    # existing machine after pull
+make install  # fresh clone
 ```
 
 ### 2. Install plugins

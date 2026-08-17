@@ -21,7 +21,7 @@ Personal configuration files managed with [GNU Stow](https://www.gnu.org/softwar
 
 ## Setup
 
-Clone the repo, then bootstrap and install:
+Fresh clone:
 
 ```bash
 git clone <repo-url> ~/dotfiles
@@ -30,18 +30,37 @@ make bootstrap
 make install
 ```
 
+On an existing machine after pulling updates, inspect and apply changes with:
+
+```bash
+make doctor
+make apply
+```
+
+For a symlink-only update, run:
+
+```bash
+make sync
+```
+
 ## Commands
 
 ### `make bootstrap`
-Installs all dependencies (sheldon, starship, bat, zoxide, fzf, rg, fd, dust, duf, xh, lazygit, lazydocker, gh, git-delta, mise). Safe to run on a fresh machine — skips anything already installed.
+Installs all dependencies (sheldon, starship, bat, zoxide, fzf, rg, fd, dust, duf, xh, lazygit, lazydocker, gh, git-delta, mise, nvim, tmux, btop). Safe to run on a fresh machine — skips anything already installed.
 
 > **Note (Ubuntu/Debian):** `fd` is installed as `fdfind`. Bootstrap automatically creates a `~/.local/bin/fd` symlink. Make sure `~/.local/bin` is in your `PATH`.
 
 ### `make install`
 Stows all packages by creating symlinks from `$HOME` into this repo. Run once after cloning. Aborts on conflicts — if a config file already exists at the target path, remove it first and re-run.
 
+### `make doctor`
+Checks expected commands, stow dry-run status, and mise state without installing tools or changing symlinks. Run this before applying updates on a non-fresh machine.
+
+### `make apply`
+Runs `make bootstrap`, restows dotfiles, runs `mise install` for configured runtimes (`node`, `python`, `go`, `java`), then runs `make doctor`. Use this after pulling updates on an existing machine.
+
 ### `make sync`
-Restows all packages. Run this after pulling updates or adding new files to a package — it tears down and recreates all symlinks to pick up any changes in the repo structure.
+Restows all packages. Use this for a quick symlink-only update after adding files to a package.
 
 ## Shell features
 
@@ -71,4 +90,5 @@ Copy `.zshrc.local.example` to `~/.zshrc.local` for overrides that shouldn't be 
 2. Mirror the target path inside it (e.g. `foo/.config/foo/config`)
 3. Add `stow_package foo` to `scripts/install.sh`
 4. Add `foo` to the list in `scripts/sync.sh`
-5. Run `make sync`
+5. Add `foo` to the package list in `scripts/doctor.sh`
+6. Run `make doctor` and `make sync`

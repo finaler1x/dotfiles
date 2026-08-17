@@ -41,4 +41,9 @@ tmux server start. Run `prefix + I` once if plugins aren't yet installed.
 ## Installation
 
     cd ~/dotfiles
-    make install        # or: stow --target=$HOME proj
+    make apply          # existing machine after pull
+    make install        # fresh clone
+
+Manual fallback:
+
+    stow --target=$HOME proj

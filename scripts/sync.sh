@@ -42,9 +42,15 @@ echo "Restowing packages..."
 echo ""
 
 failed=0
-for pkg in tmux opencode nvim zsh ghostty bat lazygit lazydocker starship gh git mise herdr; do
+for pkg in tmux opencode nvim zsh ghostty bat lazygit lazydocker starship gh git mise proj herdr; do
   restow_package "$pkg" || failed=1
 done
 
 echo ""
-[[ $failed -eq 0 ]] && echo "All packages synced." || echo "Some packages had conflicts — resolve and re-run make sync."
+if [[ $failed -eq 0 ]]; then
+  echo "All packages synced."
+else
+  echo "Some packages had conflicts — resolve and re-run make sync."
+fi
+
+exit "$failed"

@@ -19,7 +19,7 @@ Changing opencode agents, slash commands, plugins, permissions, or AGENTS.md.
    ```
    make sync
    ```
-   Editing existing files does not require restowing — the symlink already points to the dotfiles copy.
+   Editing existing files does not require restowing — the symlink already points to the dotfiles copy. After pulling broader dotfiles updates, `make apply` is also safe and includes `make sync`.
 
 3. Restart opencode. Config is loaded at startup and not hot-reloaded.
 
@@ -50,5 +50,5 @@ Restart opencode.
 ## Pitfalls
 - Never edit the live files at `~/.config/opencode/` directly. They are symlinks — edits go through, but `git status` in the dotfiles repo won't show changes if you used an editor that replaces the file instead of writing through the symlink.
 - opencode validates `opencode.json` strictly. A malformed file prevents startup. Use `OPENCODE_DISABLE_PROJECT_CONFIG=1` to recover.
-- Adding new files (agents, skills) requires `make sync` to create symlinks. Editing existing ones does not.
+- Adding new files (agents, skills) requires `make sync` to create symlinks. Editing existing ones does not. Use `make apply` after pulling repo updates when dependencies may also have changed.
 - The `plugin` array uses npm specifiers. After changing plugins, opencode installs them on next start — this requires network access.

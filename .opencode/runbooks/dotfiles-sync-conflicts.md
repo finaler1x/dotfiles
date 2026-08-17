@@ -1,7 +1,7 @@
 # Dotfiles Sync Conflicts
 
 ## Use when
-`make sync` reports conflicts because real files exist where stow expects symlinks.
+`make doctor`, `make sync`, or `make apply` reports conflicts because real files exist where stow expects symlinks.
 
 ## Prerequisites
 - GNU Stow installed
@@ -50,7 +50,9 @@ ls -la ~/<RELATIVE_PATH>
 
 Each file should show `-> ../../dotfiles/<PACKAGE>/...` or similar.
 
-Run `make sync` — should report `[ok]` for the package.
+Run `make doctor` or `make sync` — should report `[ok]` for the package.
+
+If `make apply` reported the conflict, re-run `make apply` after resolving it.
 
 ## Cleanup / Rollback
 

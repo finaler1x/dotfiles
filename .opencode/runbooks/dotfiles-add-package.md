@@ -33,19 +33,24 @@ Adding a new tool's configuration to the dotfiles repo.
    for pkg in tmux opencode nvim ... <PACKAGE>; do
    ```
 
-5. Remove the original files (they'll be replaced by symlinks):
+5. Add the package to the package list in `scripts/doctor.sh`:
+   ```
+   packages=(tmux opencode nvim ... <PACKAGE>)
+   ```
+
+6. Remove the original files (they'll be replaced by symlinks):
    ```
    rm ~/.config/<TOOL>/<FILES>
    ```
 
-6. Stow the new package:
+7. Stow the new package:
    ```
    stow --dir=~/dotfiles --target=$HOME <PACKAGE>
    ```
 
-7. Commit:
+8. Commit:
    ```
-   git add ~/dotfiles/<PACKAGE> ~/dotfiles/scripts/install.sh ~/dotfiles/scripts/sync.sh
+   git add ~/dotfiles/<PACKAGE> ~/dotfiles/scripts/install.sh ~/dotfiles/scripts/sync.sh ~/dotfiles/scripts/doctor.sh
    git commit -m "feat: add <PACKAGE> dotfiles"
    ```
 
@@ -55,6 +60,8 @@ Verify symlinks:
 ```
 ls -la ~/.config/<TOOL>/
 ```
+
+Run `make doctor` — the new package should report `[ok]` or an actionable conflict.
 
 Run `make sync` — all packages should report `[ok]`.
 
@@ -71,6 +78,6 @@ cp ~/dotfiles/<PACKAGE>/.config/<TOOL>/<FILES> ~/.config/<TOOL>/
 Revert the script changes and remove the package directory.
 
 ## Pitfalls
-- Both `install.sh` and `sync.sh` must be updated. Forgetting one means `make install` or `make sync` will skip the package.
+- `install.sh`, `sync.sh`, and `doctor.sh` must all be updated. Forgetting one means `make install`, `make sync`, or `make doctor` will skip the package.
 - The directory structure under the package must exactly mirror `$HOME`. A wrong nesting level will stow files to the wrong place.
 - Check `.stow-local-ignore` if the package name collides with an ignored pattern.
