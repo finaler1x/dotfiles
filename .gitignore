@@ -5,3 +5,10 @@
 .claude
 .junie
 .opencode/plans/
+
+# Generated Herdr runtime state
+herdr/.config/herdr/.plugins.lock
+herdr/.config/herdr/herdr-client.log
+herdr/.config/herdr/herdr-server.log
+herdr/.config/herdr/release-notes.json
+herdr/.config/herdr/session.json
