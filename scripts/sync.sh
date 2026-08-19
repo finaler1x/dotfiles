@@ -46,6 +46,10 @@ for pkg in tmux opencode nvim zsh ghostty bat lazygit lazydocker starship gh git
   restow_package "$pkg" || failed=1
 done
 
+if [[ "$(uname)" == "Darwin" ]]; then
+  restow_package aerospace || failed=1
+fi
+
 echo ""
 if [[ $failed -eq 0 ]]; then
   echo "All packages synced."

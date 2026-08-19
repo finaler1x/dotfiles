@@ -18,6 +18,7 @@ Personal configuration files managed with [GNU Stow](https://www.gnu.org/softwar
 | `git` | `~/.gitconfig` |
 | `mise` | `~/.config/mise/config.toml` |
 | `opencode` | `~/.config/opencode/opencode.json` |
+| `aerospace` (macOS only) | `~/.config/aerospace/aerospace.toml` |
 
 ## Setup
 

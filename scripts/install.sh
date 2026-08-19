@@ -23,3 +23,7 @@ stow_package git
 stow_package mise
 stow_package proj
 stow_package herdr
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  stow_package aerospace
+fi

@@ -22,6 +22,10 @@ commands=(
 
 packages=(tmux opencode nvim zsh ghostty bat lazygit lazydocker starship gh git mise proj herdr)
 
+if [[ "$(uname)" == "Darwin" ]]; then
+  packages+=(aerospace)
+fi
+
 echo "Checking commands..."
 echo ""
 
