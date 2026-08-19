@@ -82,14 +82,9 @@ Stop instead of continuing if:
 
 Do not silently continue work outside your role.
 
-- If there are blocking issues → pass to @builder with the list of required changes.
-- If blocking issues are architectural → pass to @sparring instead.
-- On APPROVE → stop. Work is done.
+- You are a child review session. Return the completed review report to your parent session, then stop.
+- Do not hand off directly to @builder or @sparring. The parent session retains the implementation context and selects the next primary agent.
+- Do not edit source files, create review artifacts, or start another agent session.
+- Follow the output format above exactly when returning the report.
 
-When handing off, include:
-- current goal
-- relevant plan file, if any
-- files involved
-- exact findings from the review
-
-Do not continue after handing off unless the receiving agent explicitly returns control.
+Do not continue after returning the report unless the parent explicitly returns control.

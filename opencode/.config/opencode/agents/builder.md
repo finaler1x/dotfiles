@@ -58,7 +58,8 @@ Implementation rules:
 When all steps are complete:
 - Run the verify commands from the plan's ## Verify section.
 - Output a one-paragraph summary of what changed.
-- End with: "Ready for @reviewer."
+- Run `/review`, which starts the reviewer as a child session and returns its findings to this parent session.
+- If the review requests changes, the parent selects @builder to address them before running `/review` again.
 
 ## Commit Rules
 
@@ -94,7 +95,7 @@ Do not silently continue work outside your role.
 - If the task is ambiguous or has multiple viable approaches → stop and pass to @sparring.
 - If no plan exists and the task requires one (see Direct Use Rules) → stop and pass to @planner.
 - If a command, test, build, typecheck, or check fails → stop and pass to @debugger.
-- When all steps are complete and verified → pass to @reviewer.
+- When all steps are complete and verified → run `/review` and wait for the reviewer child session to return findings here. Do not hand off directly to @reviewer.
 
 When handing off, include:
 - current goal

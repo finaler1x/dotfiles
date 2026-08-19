@@ -10,9 +10,9 @@ Use standard shell tools (grep, find, ls, git, etc.).
 2. @planner — find relevant files, write a plan, wait for approval
 3. (you review and approve the plan)
 4. @builder — implement from plan
-5. @reviewer — audit the diff
-6. If @reviewer requests changes → back to @builder, then @reviewer again
-7. If architectural issues surface in review → back to @sparring
+5. /review — run @reviewer as a child session to audit the diff
+6. The reviewer returns structured findings to the parent session; if changes are requested, the parent switches to @builder, then runs /review again
+7. If architectural issues surface in review, the parent switches to @sparring
 
 ### When to skip steps
 - Skip @sparring for clear, well-scoped tasks
@@ -20,10 +20,12 @@ Use standard shell tools (grep, find, ls, git, etc.).
 - Never skip @reviewer
 
 ### Re-entry points
-- @reviewer flags blockers → @builder fixes → @reviewer again
-- @reviewer flags architectural issues → @sparring → @planner → @builder → @reviewer
+- @reviewer returns blockers to the parent → parent switches to @builder → /review again
+- @reviewer returns architectural issues to the parent → parent switches to @sparring → @planner → @builder → /review
 - @builder hits a failing check → @debugger diagnoses → @builder continues
 - @builder hits unexpected complexity → stop, go back to @planner
+
+The reviewer must return its findings to its parent session. It must not hand off directly to @builder or @sparring, which would create a new session without the parent context.
 
 ## Plans
 Plans live in `.opencode/plans/`. Check this directory before starting work — a plan may already exist.
