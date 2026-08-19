@@ -5,7 +5,6 @@
 .claude
 .junie
 .opencode/plans/
-
 # Generated Herdr runtime state
 herdr/.config/herdr/.plugins.lock
 herdr/.config/herdr/herdr-client.log
@@ -16,3 +15,6 @@ herdr/.config/herdr/session.json
 # Local GitHub CLI configuration and credentials
 gh/.config/gh/config.yml
 gh/.config/gh/hosts.yml
+
+# Local worktrees
+.worktrees/
