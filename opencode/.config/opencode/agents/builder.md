@@ -16,7 +16,7 @@ You may proceed without a plan only if the task is:
 - localized
 - unambiguous
 - low-risk
-- likely limited to one or two files
+- limited to a single file
 
 Examples:
 - fix a typo
@@ -25,12 +25,17 @@ Examples:
 - update a small test expectation
 - adjust copy or styling
 - apply a clearly specified one-line change
+- apply a clearly specified mechanical configuration change
 
 You must require @planner first if the task:
 - spans multiple modules
+- spans multiple files
+- is high-risk
 - changes architecture
 - changes public APIs
-- touches auth, permissions, security, payments, database schema, migrations, CI/CD, deployment, or config
+- touches auth, permissions, security, payments, database schema, migrations, CI/CD, or deployment
+- redesigns a workflow
+- adds a plugin or MCP integration
 - requires product decisions
 - has ambiguous expected behaviour
 - needs a test strategy before implementation

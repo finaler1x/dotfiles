@@ -7,6 +7,10 @@ Changing opencode agents, slash commands, plugins, permissions, or AGENTS.md.
 - Dotfiles repo at `~/dotfiles`
 - Opencode package is stowed (`~/.config/opencode/` files are symlinks to dotfiles)
 
+## Planning gate
+- Proceed directly only for a small, localized, unambiguous, low-risk, single-file mechanical configuration change.
+- Require an approved plan for multi-file, high-risk, ambiguous, architectural, security-sensitive, workflow redesign, new plugin/MCP integration, CI/CD, deployment, permission, or test-strategy work.
+
 ## Steps
 
 1. Edit the file in the **dotfiles repo**, not the live symlink:
