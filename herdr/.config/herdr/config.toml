@@ -20,5 +20,5 @@ workspace_picker = ["prefix+w"]
 delivery = "herdr"
 
 [theme]
-name = "catppuccin"
+name = "terminal"
 auto_switch = false
