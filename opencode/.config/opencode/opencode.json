@@ -67,8 +67,8 @@
       "disable": true
     }
   },
-  "model": "github-copilot/gpt-5.6-sol",
-  "small_model": "github-copilot/gpt-5.6-terra",
+  "model": "github-copilot/gpt-5.6-terra",
+  "small_model": "github-copilot/gpt-5.6-luna",
   "share": "disabled",
   "autoupdate": "notify",
   "watcher": {
