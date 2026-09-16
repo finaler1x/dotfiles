@@ -39,6 +39,50 @@ Quick reference for all tools in this setup.
 
 ---
 
+## Hyprland
+
+`Super` is the Windows/Meta key.
+
+| Key | Action |
+|-----|--------|
+| `Super-Q` | Open Ghostty (Hyprland's standard terminal shortcut) |
+| `Super-C` | Close active window |
+| `Super-M` | Exit Hyprland and return to SDDM |
+| `Super-E` | Open Dolphin |
+| `Super-V` | Toggle floating for the active window |
+| `Super-R` | Open Wofi (Hyprland's standard launcher shortcut) |
+| `Super-P` | Toggle pseudotiling |
+| `Super-J` | Toggle the Dwindle split direction |
+| `Super-Left/Right/Up/Down` | Move focus in that direction |
+| `Super-1` … `Super-0` | Switch to workspace 1 … 10 |
+| `Super-Shift-1` … `Super-Shift-0` | Move active window to workspace 1 … 10 |
+| `Super-S` | Toggle the `magic` special workspace |
+| `Super-Shift-S` | Move active window to the `magic` special workspace |
+| `Super-Mouse wheel` | Cycle through existing workspaces |
+| `Super + left-drag` | Move window |
+| `Super + right-drag` | Resize window |
+| `Volume Up/Down` | Raise or lower output volume |
+| `Mute` | Toggle output mute |
+| `Mic Mute` | Toggle microphone mute |
+| `Brightness Up/Down` | Raise or lower display brightness |
+| `Media Next/Previous` | Select the next or previous media item |
+| `Media Play/Pause` | Toggle media playback |
+
+---
+
+## TTY and graphical-session recovery
+
+| Key / command | Action |
+|---------------|--------|
+| `Ctrl-Alt-F3` | Switch from a graphical session to TTY 3 |
+| `Ctrl-Alt-F1` or `Ctrl-Alt-F2` | Return to the graphical session; assignment can vary |
+| `exit` | Log out of the current TTY |
+| `sudo systemctl restart sddm` | Restart the login screen if Hyprland remains black; terminates the current graphical session |
+
+At SDDM, select **Plasma (Wayland)** for the known-working KDE session or **Hyprland** for the test session.
+
+---
+
 ## herdr
 
 `ctrl+alt` shortcuts use no prefix. `prefix` shortcuts require `ctrl+b` first (shared with tmux).

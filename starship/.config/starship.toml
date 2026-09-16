@@ -22,8 +22,8 @@ $character"""
 palette = "kanagawa_wave"
 
 [directory]
-style = "bold crystalBlue"
-format = "[$path]($style) "
+style = "bold crystal_blue"
+format = "[󰉋 $path]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -35,76 +35,82 @@ truncation_symbol = "…/"
 "Developer" = "󰲋 "
 
 [git_branch]
-format = "[$branch]($style)"
+format = " [·](fuji_gray) [󰘬 $branch]($style)"
 symbol = ""
-style = "bold oniViolet"
+style = "bold oni_violet"
 
 [git_status]
-format = "[$all_status$ahead_behind]($style) "
-style = "waveRed"
-modified = "*"
-staged = "+"
-untracked = "?"
-deleted = "x"
+format = "$all_status$ahead_behind"
+conflicted = "[ =${count}](bold wave_red)"
+ahead = "[ ⇡${count}](spring_blue)"
+behind = "[ ⇣${count}](spring_blue)"
+diverged = "[ ⇕⇡${ahead_count}⇣${behind_count}](oni_violet)"
+untracked = "[ ?${count}](carp_yellow)"
+stashed = '[ \$${count}](oni_violet)'
+modified = "[ *${count}](wave_red)"
+staged = "[ +${count}](spring_green)"
+renamed = "[ »${count}](surimi_orange)"
+deleted = "[ x${count}](wave_red)"
+up_to_date = ""
 
 [c]
-format = "[c $version]($style) "
-style = "surimiOrange"
+format = " [·](fuji_gray) [ $version]($style)"
+style = "spring_green"
 version_format = "${major}.${minor}"
 
 [rust]
-format = "[rs $version]($style) "
-style = "waveRed"
+format = " [·](fuji_gray) [ $version]($style)"
+style = "surimi_orange"
 version_format = "${major}.${minor}"
 
 [golang]
-format = "[go $version]($style) "
-style = "springBlue"
+format = " [·](fuji_gray) [ $version]($style)"
+style = "spring_blue"
 version_format = "${major}.${minor}"
 
 [nodejs]
-format = "[node $version]($style) "
-style = "springGreen"
+format = " [·](fuji_gray) [ $version]($style)"
+style = "spring_blue"
 version_format = "${major}.${minor}"
 
 [php]
-format = "[php $version]($style) "
-style = "oniViolet"
+format = " [·](fuji_gray) [ $version]($style)"
+style = "spring_green"
 version_format = "${major}.${minor}"
 
 [java]
-format = "[java $version]($style) "
-style = "waveRed"
+format = " [·](fuji_gray) [ $version]($style)"
+style = "surimi_orange"
 version_format = "${major}.${minor}"
 
 [kotlin]
-format = "[kt $version]($style) "
-style = "oniViolet"
+format = " [·](fuji_gray) [ $version]($style)"
+style = "spring_green"
 version_format = "${major}.${minor}"
 
 [haskell]
-format = "[hs $version]($style) "
-style = "oniViolet"
+format = " [·](fuji_gray) [ $version]($style)"
+style = "spring_green"
 version_format = "${major}.${minor}"
 
 [python]
-format = "[py $version]($style) "
-style = "carpYellow"
+format = " [·](fuji_gray) [ $version]($style)"
+style = "carp_yellow"
 version_format = "${major}.${minor}"
 
 [docker_context]
-format = "[docker $context]($style) "
-style = "springBlue"
+format = " [·](fuji_gray) [ $context]($style)"
+style = "spring_blue"
 
 [conda]
-format = "[conda $environment]($style) "
-style = "springGreen"
+format = " [·](fuji_gray) [ $environment]($style)"
+style = "spring_green"
 ignore_base = false
 
 [cmd_duration]
 show_milliseconds = true
-format = "[$duration]($style) "
-style = "fujiGray"
+format = " [·](fuji_gray) [󱎫 $duration]($style)"
+style = "fuji_gray"
 disabled = false
 show_notifications = true
 min_time_to_notify = 45000
@@ -113,21 +119,21 @@ min_time_to_notify = 45000
 disabled = false
 
 [character]
-success_symbol = "[❯](bold springGreen)"
-error_symbol = "[❯](bold waveRed)"
-vimcmd_symbol = "[❮](bold springGreen)"
-vimcmd_replace_one_symbol = "[❮](bold oniViolet)"
-vimcmd_replace_symbol = "[❮](bold oniViolet)"
-vimcmd_visual_symbol = "[❮](bold carpYellow)"
+success_symbol = "[❯](bold spring_green)"
+error_symbol = "[❯](bold wave_red)"
+vimcmd_symbol = "[❮](bold spring_green)"
+vimcmd_replace_one_symbol = "[❮](bold oni_violet)"
+vimcmd_replace_symbol = "[❮](bold oni_violet)"
+vimcmd_visual_symbol = "[❮](bold carp_yellow)"
 
 [palettes.kanagawa_wave]
-sumiInk1 = "#1F1F28"
-fujiWhite = "#DCD7BA"
-crystalBlue = "#7E9CD8"
-oniViolet = "#957FB8"
-springGreen = "#98BB6C"
-springBlue = "#7FB4CA"
-carpYellow = "#E6C384"
-surimiOrange = "#FFA066"
-waveRed = "#E46876"
-fujiGray = "#727169"
+sumi_ink_1 = "#1F1F28"
+fuji_white = "#DCD7BA"
+crystal_blue = "#7E9CD8"
+oni_violet = "#957FB8"
+spring_green = "#98BB6C"
+spring_blue = "#7FB4CA"
+carp_yellow = "#E6C384"
+surimi_orange = "#FFA066"
+wave_red = "#E46876"
+fuji_gray = "#727169"

@@ -3,6 +3,30 @@
 ## Shell commands
 Use standard shell tools (grep, find, ls, git, etc.).
 
+## File read cache
+
+Maintain a per-session read ledger containing each file path, its content hash, and the ranges or symbols already read.
+
+Before reading a file again:
+
+1. Compare its current content hash with the recorded hash.
+2. If unchanged, reuse the existing context and do not reread it.
+3. If changed by the agent, use the known patch or diff instead of rereading it.
+4. If changed externally, inspect a zero-context diff first and read only changed ranges with bounded context.
+5. Invalidate the entry after checkout, reset, rebase, generated-file updates, or external modifications.
+
+Never reread an entire file merely to verify an edit. Prefer targeted searches, symbols, diffs, and bounded reads over full-file reads. Only calculate a hash when a file would otherwise be reread.
+
+## Token and execution budget
+
+- Run focused checks while implementing and one full verification before final review.
+- Repeat full verification only when the resulting source tree changed; for history-only rewrites, compare tree or aggregate diff hashes instead.
+- Invoke reviewers only for completed implementation and debuggers only for unexplained failures.
+- Do not reload a skill already present in the current context.
+- Delegate only when the task benefits from independent context or parallel work; do not delegate work that the parent can complete in fewer tool calls.
+- Keep status updates to one line.
+- Before exceeding 30 tool calls or 100k uncached context tokens, pause and ask the user whether to continue.
+
 ## Agent workflow
 
 ### Full pipeline (non-trivial tasks)

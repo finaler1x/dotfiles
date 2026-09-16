@@ -7,6 +7,14 @@
       }
     }
   },
+  "tool_output": {
+    "max_lines": 300,
+    "max_bytes": 20000
+  },
+  "compaction": {
+    "auto": true,
+    "tail_turns": 15
+  },
   "permission": {
     "read": {
       "*": "allow",
