@@ -5,6 +5,7 @@
 .claude
 .junie
 .opencode/plans/
+docs/plans/
 # Generated Herdr runtime state
 herdr/.config/herdr/.plugins.lock
 herdr/.config/herdr/herdr-client.log
