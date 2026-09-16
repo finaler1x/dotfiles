@@ -29,7 +29,7 @@
 	navigate = true
 	side-by-side = true
 	line-numbers = true
-	syntax-theme = Catppuccin-macchiato
+	syntax-theme = ansi
 
 [interactive]
 	diffFilter = delta --color-only

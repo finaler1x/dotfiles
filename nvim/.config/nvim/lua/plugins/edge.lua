@@ -1,18 +1,16 @@
 return {
   {
-    "sainnhe/everforest",
-    name = "everforest",
+    "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.g.everforest_background = "hard"
-      vim.g.everforest_better_performance = 1
-    end,
+    opts = {
+      theme = "wave",
+    },
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "everforest",
+      colorscheme = "kanagawa-wave",
     },
   },
 }

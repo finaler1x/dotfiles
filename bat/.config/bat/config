@@ -1,4 +1,4 @@
---theme="TwoDark"
+--theme="ansi"
 --style=numbers,changes,header-filename
 --italic-text=always
 --color=always
