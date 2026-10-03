@@ -58,6 +58,19 @@ These bindings are shared by Hyprland on Linux and AeroSpace on macOS. Inside Gh
 
 ---
 
+## TTY and graphical-session recovery
+
+| Key / command | Action |
+|---------------|--------|
+| `Ctrl-Alt-F3` | Switch from a graphical session to TTY 3 |
+| `Ctrl-Alt-F1` or `Ctrl-Alt-F2` | Return to the graphical session; assignment can vary |
+| `exit` | Log out of the current TTY |
+| `sudo systemctl restart sddm` | Restart the login screen if Hyprland remains black; terminates the current graphical session |
+
+At SDDM, select **Plasma (Wayland)** for the known-working KDE session or **Hyprland** for the test session.
+
+---
+
 ## herdr
 
 `ctrl+alt` shortcuts use no prefix. `prefix` shortcuts require `ctrl+b` first (shared with tmux).
