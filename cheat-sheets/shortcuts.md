@@ -39,6 +39,25 @@ Quick reference for all tools in this setup.
 
 ---
 
+## Hyprland / AeroSpace
+
+These bindings are shared by Hyprland on Linux and AeroSpace on macOS. Inside Ghostty, the unmodified `Ctrl-h/j/k/l` bindings remain available for tmux and Neovim navigation.
+
+| Key | Action |
+|-----|--------|
+| `Ctrl-Alt-Enter` | Open Ghostty |
+| `Ctrl-Alt-h/j/k/l` | Focus window left/down/up/right |
+| `Ctrl-Alt-Left/Down/Up/Right` | Focus window by direction |
+| `Ctrl-Alt-Shift-h/j/k/l` | Move window left/down/up/right |
+| `Ctrl-Alt-Shift-Left/Down/Up/Right` | Move window by direction |
+| `Ctrl-Alt-f` | Toggle fullscreen |
+| `Ctrl-Alt-Shift-Space` | Toggle floating |
+| `Ctrl-Alt-Shift-q` | Close window |
+| `Ctrl-Alt-1..9` | Switch workspace |
+| `Ctrl-Alt-Shift-1..9` | Move window to workspace |
+
+---
+
 ## herdr
 
 `ctrl+alt` shortcuts use no prefix. `prefix` shortcuts require `ctrl+b` first (shared with tmux).

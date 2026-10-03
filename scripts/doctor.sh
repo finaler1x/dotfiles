@@ -20,10 +20,12 @@ commands=(
   lazygit lazydocker gh mise nvim tmux btop
 )
 
-packages=(tmux opencode nvim zsh ghostty bat lazygit lazydocker starship gh git mise proj herdr)
+packages=(tmux opencode nvim zsh ghostty bat lazygit lazydocker starship git mise herdr)
 
 if [[ "$(uname)" == "Darwin" ]]; then
   packages+=(aerospace)
+elif [[ "$(uname)" == "Linux" ]]; then
+  packages+=(hypr)
 fi
 
 echo "Checking commands..."

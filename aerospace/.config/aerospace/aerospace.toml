@@ -68,8 +68,8 @@ ctrl-alt-shift-q = 'close'
 # Reload config
 ctrl-alt-shift-c = 'reload-config'
 
-# Open terminal (change path to your preferred terminal)
-ctrl-alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
+# Open terminal
+ctrl-alt-enter = 'exec-and-forget open -na Ghostty'
 
 # Resize mode
 ctrl-alt-r = 'mode resize'
@@ -126,19 +126,6 @@ shift-k = 'resize height -200'
 shift-l = 'resize width +200'
 enter = 'mode main'
 esc   = 'mode main'
-
-# === WORKSPACE TO MONITOR ASSIGNMENTS ===
-# Remove this section if you only have one monitor
-[workspace-to-monitor-force-assignment]
-1 = 'main'
-2 = 'main'
-3 = 'main'
-4 = 'secondary'
-5 = 'secondary'
-6 = 'secondary'
-7 = 'secondary'
-8 = 'secondary'
-9 = 'secondary'
 
 # === APP RULES ===
 [[on-window-detected]]

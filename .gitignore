@@ -12,7 +12,7 @@ herdr/.config/herdr/herdr-server.log
 herdr/.config/herdr/release-notes.json
 herdr/.config/herdr/session.json
 
-# Local GitHub CLI configuration and credentials
+# Local-only GitHub CLI configuration and credential state; not a Stow package
 gh/.config/gh/config.yml
 gh/.config/gh/hosts.yml
 

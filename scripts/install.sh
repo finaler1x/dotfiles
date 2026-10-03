@@ -18,12 +18,12 @@ stow_package bat
 stow_package lazygit
 stow_package lazydocker
 stow_package starship
-stow_package gh
 stow_package git
 stow_package mise
-stow_package proj
 stow_package herdr
 
 if [[ "$(uname)" == "Darwin" ]]; then
   stow_package aerospace
+elif [[ "$(uname)" == "Linux" ]]; then
+  stow_package hypr
 fi

@@ -14,10 +14,10 @@ Personal configuration files managed with [GNU Stow](https://www.gnu.org/softwar
 | `bat` | `~/.config/bat/config` |
 | `lazygit` | `~/.config/lazygit/config.yml` |
 | `lazydocker` | `~/.config/lazydocker/config.yml` |
-| `gh` | `~/.config/gh/config.yml` |
 | `git` | `~/.gitconfig` |
 | `mise` | `~/.config/mise/config.toml` |
 | `opencode` | `~/.config/opencode/opencode.json` |
+| `hypr` (Linux only) | `~/.config/hypr/hyprland.lua` |
 | `aerospace` (macOS only) | `~/.config/aerospace/aerospace.toml` |
 
 ## Setup
@@ -73,6 +73,10 @@ Restows all packages. Use this for a quick symlink-only update after adding file
 | `zi` | Interactive zoxide directory jump |
 | `z <dir>` | Jump to frecency-matched directory |
 
+## Shared window management
+
+Hyprland on Linux and AeroSpace on macOS share `Ctrl-Alt` bindings for the core development workflow. Use `Ctrl-Alt-Enter` to open Ghostty, `Ctrl-Alt-h/j/k/l` to focus windows, add `Shift` to move windows, and use `Ctrl-Alt-1` through `Ctrl-Alt-9` for workspaces. Hyprland keeps its existing `Super` bindings as aliases.
+
 ## tmux popups
 
 | Key | Action |
@@ -84,6 +88,8 @@ Restows all packages. Use this for a quick symlink-only update after adding file
 ## Machine-specific config
 
 Copy `.zshrc.local.example` to `~/.zshrc.local` for overrides that shouldn't be tracked (work proxies, GPU workarounds, extra PATH entries). This file is gitignored.
+
+On Linux, `hyprland.lua` requires local `~/.config/hypr/monitors.lua` and `~/.config/hypr/noctalia.lua` modules generated or maintained outside the Stow package. Provide both files on a fresh setup before reloading Hyprland.
 
 ## Adding a new package
 

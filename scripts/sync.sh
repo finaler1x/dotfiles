@@ -42,12 +42,14 @@ echo "Restowing packages..."
 echo ""
 
 failed=0
-for pkg in tmux opencode nvim zsh ghostty bat lazygit lazydocker starship gh git mise proj herdr; do
+for pkg in tmux opencode nvim zsh ghostty bat lazygit lazydocker starship git mise herdr; do
   restow_package "$pkg" || failed=1
 done
 
 if [[ "$(uname)" == "Darwin" ]]; then
   restow_package aerospace || failed=1
+elif [[ "$(uname)" == "Linux" ]]; then
+  restow_package hypr || failed=1
 fi
 
 echo ""
